@@ -28,3 +28,7 @@ Route::match(['get', 'post'], 'register', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+//Rutas de usuarios
+Route::get('/usuario/index', 'UserController@index')->name('usuario.index')->middleware('admin');

@@ -7,13 +7,14 @@
     <div class="login-box">
         <div class="login-logo mb-3">           
         </div>
+        <h3 class="text-center">Incidencias</h3>
         <div class="card card-outline card-primary mt-4">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Iniciar sesión</p>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="input-group mb-3">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo electrónico">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo electrónico" autocomplete="email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
