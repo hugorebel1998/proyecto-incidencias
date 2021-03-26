@@ -14,8 +14,6 @@ class CreateIncidentsTable extends Migration
     public function up()
     {
         Schema::create('incidents', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->charset = 'utf8mb4';
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('description');

@@ -4,60 +4,48 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>E-commerce</title>
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <!-- Font Awesome -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('admin-lte/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}">
-    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
+        <nav class="main-header navbar navbar-expand navbar-dark navbar-navy">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars text-white"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">inicio</a>
+                    <a href="{{ route('home') }}" class="nav-link text-white">Inicio</a>
                 </li>
             </ul>
-            <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                    <a class="nav-link text-white" data-toggle="dropdown">
                         | Perfil <i class="fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <p class="text-center"> {{ Auth::user()->name }}</p>
                         <span class="dropdown-header">{{ Auth::user()->email }}</span>
                         <div class="dropdown-divider"></div>
-                        @if (Auth::user()->role != 0)
-
-                        @else
-                            <a class="dropdown-item" href="{{ route('usuario.index') }}">
-                                <i class="fas fa-users"></i> {{ __('Usuarios') }}
-                            </a>
-                        @endif
-
-
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-cogs"></i> {{ __('Configuración') }}
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-user-edit"></i> Editar perfil
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-          document.getElementById('logout-form').submit();">
+                        document.getElementById('logout-form').submit();">
                             <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar Sesión') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -66,167 +54,213 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link text-white" data-widget="control-sidebar" data-slide="true" href="#"
+                        role="button">
+                        <i class="fas fa-th-large"></i>
+                    </a>
                 </li>
-                {{-- <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li> --}}
             </ul>
         </nav>
-        <!-- /.navbar -->
+        <aside class="main-sidebar sidebar-light-navy elevation-4">
 
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="{{ asset('admin-lte/index3.html') }} " class="brand-link">
-                <img src="{{ asset('admin-lte/dist/img/AdminLTELogo.png') }} " alt="AdminLTE Logo"
+            <a href="index3.html" class="brand-link navbar-navy">
+                <img src="{{ asset('admin-lte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">
-                    {{ config('app.name', 'E-commerce') }}
-                </span>
+                <span class="brand-text font-weight-light text-white">Laravel</span>
             </a>
-
-            <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user (optional) -->
+
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
                     <div class="image">
-                        <img src="{{ asset('admin-lte/dist/img/user2-160x160.jpg') }} "
-                            class="img-circle elevation-2" alt="User Image">
+                        <img src="{{ asset('admin-lte/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2"
+                            alt="User Image">
                     </div>
                     <div class="info">
                         <a class="d-block">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
+
+
+                <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
-                                <i class="fab fa-accusoft"></i>
+                                <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Incidencias
+                                    Reportes
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('incidencias.index') }}" class="nav-link text-secondary">
+                                        <i class="far fa-list-alt nav-icon"></i>
+                                        <p>Gestión de reportes</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('incidencias.create') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear reporte</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {{-- <li class="nav-item ">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Productos
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
-                                        <i class="fas fa-table"></i>
-                                        <p>Lista de incidencias</p>
+                                        <i class="far fa-list-alt nav-icon"></i>
+                                        <p class="text-black">Gestión de productos</p>
                                     </a>
                                 </li>
+                             
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
-                                        <i class="fas fa-plus"></i>
-                                        <p>Crear incidencia</p>
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear producto</p>
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        {{-- <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Productos
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../tables/jsgrid.html" class="nav-link">
-                  <i class="fas fa-table"></i>
-                  <p>Lista de productos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../tables/jsgrid.html" class="nav-link">
-                  <i class="fas fa-plus"></i>
-                  <p>Crear producto</p>
-                </a>
-              </li>
-            </ul>
-          </li> --}}
+                        </li> --}}
                     </ul>
                 </nav>
             </div>
         </aside>
-        <div class="content-wrapper">
 
-            <main class="mt-4">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <main class="py-4">
                 @yield('content')
             </main>
+
+            <!-- /.content -->
         </div>
-
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.1.0-rc
+        <aside class="control-sidebar control-sidebar-dark">
+            <div class="p-3">
+                <h5>Title</h5>
+                <p>Sidebar content</p>
             </div>
-            <strong>Copyright &copy; <?= date('Y') ?> <a href="https://adminlte.io">E-commerce</a>.</strong>.
-  </footer>
-  {{-- <aside class="control-sidebar control-sidebar-dark">
-    
-  </aside> --}}
-</div>
+        </aside>
 
-<!-- jQuery -->
-<script src="{{ asset('admin-lte/plugins/jquery/jquery.min.js') }} "></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
-<!-- jquery-validation -->
-<script src="{{ asset('admin-lte/plugins/jquery-validation/jquery.validate.min.js') }} "></script>
-<script src="{{ asset('admin-lte/plugins/jquery-validation/additional-methods.min.js') }} "></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('admin-lte/dist/js/adminlte.min.js') }} "></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('admin-lte/dist/js/demo.js') }} "></script>
-<!-- Page specific script -->
-<script>
-$(function () {
-  $.validator.setDefaults({
-    submitHandler: function () {
-      alert( "Form successful submitted!" );
-    }
-  });
-  $('#quickForm').validate({
-    rules: {
-      email: {
-        required: true,
-        email: true,
-      },
-      password: {
-        required: true,
-        minlength: 5
-      },
-      terms: {
-        required: true
-      },
-    },
-    messages: {
-      email: {
-        required: "Please enter a email address",
-        email: "Please enter a vaild email address"
-      },
-      password: {
-        required: "Please provide a password",
-        minlength: "Your password must be at least 5 characters long"
-      },
-      terms: "Please accept our terms"
-    },
-    errorElement: 'span',
-    errorPlacement: function (error, element) {
-      error.addClass('invalid-feedback');
-      element.closest('.form-group').append(error);
-    },
-    highlight: function (element, errorClass, validClass) {
-      $(element).addClass('is-invalid');
-    },
-    unhighlight: function (element, errorClass, validClass) {
-      $(element).removeClass('is-invalid');
-    }
-  });
-});
-</script>
+        <footer class="main-footer text-center">
+            <strong>&copy; 2020 E-commerce </strong> Todos los derechos reservados.
+        </footer>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{{ asset('admin-lte/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('admin-lte/plugins/select2/js/select2.full.min.js') }} "></script>
+    <script src="{{ asset('admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    @yield('scripts')
+    <!-- DataTables -->
+    <script src="{{ asset('admin-lte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <!-- AdminLTE App -->
+
+    <!-- SweetAlert2 -->
+    <script src="{{ asset('admin-lte/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+
+    <script src="{{ asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+
+    <!-- jquery-ui -->
+    <!-- <script src="{{ asset('admin-lte/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('Multiple/jquery-multiple.js') }}"></script> -->
+
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example3').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "order": [
+                    [0, 'desc']
+                ],
+                language: {
+                    search: "Buscar:",
+                    "lengthMenu": "Recorrer _MENU_ registros por página",
+                    "zeroRecords": "No hay resultados",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles ",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    paginate: {
+                        first: "Primera",
+                        previous: "Primera",
+                        next: "Última",
+                        last: "Último"
+                    },
+                }
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "order": [
+                    [0, 'desc']
+                ],
+                language: {
+                    search: "Buscar:",
+                    "lengthMenu": "Recorrer _MENU_ registros por página",
+                    "zeroRecords": "No hay resultados",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles ",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    paginate: {
+                        first: "Primera",
+                        previous: "Primera",
+                        next: "Última",
+                        last: "Último"
+                    },
+                }
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            bsCustomFileInput.init();
+        });
+
+    </script>
+
+    <script>
+        $(function() {
+            $('.select2').select2({
+                theme: 'bootstrap4'
+            })
+        });
+
+    </script>
 </body>
+
 </html>
