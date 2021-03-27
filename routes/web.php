@@ -33,3 +33,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Rutas de Inicdencias
 Route::get('/incidencas/index', 'IncidenceController@index')->name('incidencias.index')->middleware('auth');
 Route::get('/incidencas/create', 'IncidenceController@create')->name('incidencias.create')->middleware('auth');
+Route::post('/incidencas/store', 'IncidenceController@store')->name('incidencias.store')->middleware('auth');

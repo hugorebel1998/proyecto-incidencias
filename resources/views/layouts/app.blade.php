@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @toastr_css
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -261,6 +262,9 @@
         });
 
     </script>
+
 </body>
+@toastr_js
+@toastr_render
 
 </html>
