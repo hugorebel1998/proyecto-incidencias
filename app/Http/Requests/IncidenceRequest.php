@@ -24,6 +24,7 @@ class IncidenceRequest extends FormRequest
     public function rules()
     {
         return [
+            'titulo' => 'sometimes|exists:categories,id',
             'titulo' => 'required|min:4',
             'gravedad' => 'required',
             'description' => 'required|min:4|max:50'

@@ -41,14 +41,55 @@ class IncidenceController extends Controller
             $incidencia->id_client = auth()->user()->id;
 
             if ($incidencia->save()) {
-                toastr()->success('Se registro reporte :<b>' ." ". $incidencia->title . '</b>');
+                toastr()->success('Se registro reporte :<b>' . " " . $incidencia->title . '</b>');
                 return redirect()->to(route('incidencias.index'));
             } else {
                 toastr()->error('Error al registrar reporte');
                 return redirect()->back();
             }
         } else {
-            toastr()->error('Error al registrar categoria');
+            toastr()->error('Error al actualizar reporte');
+            return redirect()->to(route('incidencias.create'));
+        }
+    }
+    public function show($indidency)
+    {
+        $incidencia = Incident::findOrfail($indidency);
+        return view('incidencias.show', compact('incidencia'));
+    }
+
+    public function edit($indidency)
+    {
+        $categorias = Category::all();
+        $incidencia = Incident::find($indidency);
+        return view('incidencias.edit', compact('incidencia', 'categorias'));
+    }
+    public function update(IncidenceRequest $request,$indidency)
+    {
+        $incidencia = Incident::findOrfail($indidency);
+
+        // $incidencia->id_category = $request->input('id_category') ?: null;
+        $incidencia->title = $request->titulo;
+        $incidencia->severity = $request->gravedad;
+        $incidencia->description = $request->description;
+        $incidencia->id_client = auth()->user()->id;
+
+        if ($incidencia->save()) {
+            // $incidencia->id_category = $request->input('id_category') ?: null;
+            $incidencia->title = $request->titulo;
+            $incidencia->severity = $request->gravedad;
+            $incidencia->description = $request->description;
+            $incidencia->id_client = auth()->user()->id;
+
+            if ($incidencia->save()) {
+                toastr()->success('Se actualizo reporte :<b>' . " " . $incidencia->title . '</b>');
+                return redirect()->to(route('incidencias.index'));
+            } else {
+                toastr()->error('Error al actualizar reporte');
+                return redirect()->back();
+            }
+        } else {
+            toastr()->error('Error al actualizar reporte');
             return redirect()->to(route('incidencias.create'));
         }
     }

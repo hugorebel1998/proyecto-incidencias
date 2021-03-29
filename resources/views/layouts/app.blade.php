@@ -40,10 +40,27 @@
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <p class="text-center"> {{ Auth::user()->name }}</p>
                         <span class="dropdown-header">{{ Auth::user()->email }}</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-user-edit"></i> Editar perfil
-                        </a>
+                        @if (Auth::user()->role != 0)
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user-edit"></i> Configuración
+                            </a>
+                        @else
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-users"></i> Usuarios
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user-edit"></i> Proyectos
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user-edit"></i> Configuración
+                            </a>
+                        @endif
+
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
