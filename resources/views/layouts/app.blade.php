@@ -106,11 +106,11 @@
                                 </li>
                             </ul>
                         </li>
-                        {{-- <li class="nav-item ">
+                        <li class="nav-item ">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    Productos
+                                    Usuarios
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -118,7 +118,7 @@
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-list-alt nav-icon"></i>
-                                        <p class="text-black">Gestión de productos</p>
+                                        <p class="text-black">Lista de usuarios</p>
                                     </a>
                                 </li>
                              
@@ -129,7 +129,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> --}}
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -146,7 +146,7 @@
         </div>
         <aside class="control-sidebar control-sidebar-light">
             <div class="p-3">   
-                <a href="#" class="dropdown-item">
+                <a href="{{ route('usuarios.index') }}" class="dropdown-item active">
                     <i class="fas fa-users"></i> Usuarios
                 </a>
                 <div class="dropdown-divider"></div>

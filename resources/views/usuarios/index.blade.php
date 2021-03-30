@@ -1,5 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <h1 class="text-center">Lista de usuarios</h1>
-
+<h1>lista</h1>
+    
 @endsection
