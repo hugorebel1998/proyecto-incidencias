@@ -1,23 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use App\Category;
 use App\Incident;
 use Illuminate\Http\Request;
 use App\Http\Requests\IncidenceRequest;
+use Spatie\Permission\Models\Role;
 
 class IncidenceController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function index()
     {
+        $usuarios = User::where('role', 1)->get();
         $incidencias = Incident::all();
-        return view('incidencias.index', compact('incidencias'));
+        return view('incidencias.index', compact('usuarios','incidencias'));
     }
     public function create()
     {
@@ -26,6 +28,7 @@ class IncidenceController extends Controller
     }
     public function store(IncidenceRequest $request)
     {
+
         $incidencia = new Incident();
         $incidencia->id_category = $request->input('id_category') ?: null;
         $incidencia->title = $request->titulo;

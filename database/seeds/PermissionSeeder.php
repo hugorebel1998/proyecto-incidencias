@@ -18,31 +18,29 @@ class PermissionSeeder extends Seeder
         app()['cache']->forget('spatie.permission.cache');
 
         // create permissions
-        Permission::create(['name' => 'admin usuarios']);
-        Permission::create(['name' => 'admin proyectos']);
-        Permission::create(['name' => 'reportes']);
-        Permission::create(['name' => 'reportes listas']);
-        Permission::create(['name' => 'reportes crear']);
+        Permission::create(['name' => 'create report']);
+        Permission::create(['name' => 'read reports']);
+        Permission::create(['name' => 'edit report']);
+        Permission::create(['name' => 'update report']);
+        Permission::create(['name' => 'delete report']);
 
 
          // create roles and assign existing permissions
          $role= Role::create(['name' => 'admin']);
-         $role->givePermissionTo('admin usuarios');
-         $role->givePermissionTo('admin proyectos');
-         $role->givePermissionTo('reportes');
-         $role->givePermissionTo('reportes listas');
-         $role->givePermissionTo('reportes crear');
+         $role->givePermissionTo(Permission::all());
+         
 
          $role= Role::create(['name' => 'cliente']);
-         $role->givePermissionTo('reportes');
-         $role->givePermissionTo('reportes listas');
-         $role->givePermissionTo('reportes crear');
+         $role->givePermissionTo('create report');
+         $role->givePermissionTo('read reports');
+         
 
 
          $role= Role::create(['name' => 'soporte']);
-         $role->givePermissionTo('reportes');
-         $role->givePermissionTo('reportes listas');
-         $role->givePermissionTo('reportes crear');
+         $role->givePermissionTo('create report');
+         $role->givePermissionTo('read reports');
+         $role->givePermissionTo('edit report');
+         $role->givePermissionTo('update report');
         
     }
 }

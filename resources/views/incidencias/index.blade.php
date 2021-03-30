@@ -33,18 +33,24 @@
                                         <td>{{ $incidencia->severity }}</td>
                                         <td>{{ $incidencia->description }}</td>
                                         <td class="text-center">
-                                            <div class="dropdown">
-                                                <button class="btn btn-sm btn-primary dropdown-toggle text-white" type="button"
-                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-                                                    <i class="fas fa-cogs"></i> Acciones
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="{{ route('incidencias.show', [$incidencia->id])}}"><i class="fas fa-eye"></i> Ver reporte</a>
-                                                    <a class="dropdown-item" href="{{ route('incidencias.edit', [$incidencia->id])}}"><i class="fas fa-edit"></i> Editar reporte</a>
-                                                    <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i> Eliminar reporte</a>
-                                                </div>
-                                            </div>
+                                    
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-primary dropdown-toggle text-white" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            <i class="fas fa-cogs"></i> Acciones
+                                        </button>
+                                        @can('update report')
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="{{ route('incidencias.show', [$incidencia->id])}}"><i class="fas fa-eye"></i> Ver reporte</a>
+                                            <a class="dropdown-item" href="{{ route('incidencias.edit', [$incidencia->id])}}"><i class="fas fa-edit"></i> Editar reporte</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i> Eliminar reporte</a>
+                                        </div>    
+                                        @endcan
+                                        
+                                    </div>
+                                    
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
