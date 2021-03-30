@@ -93,7 +93,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('incidencias.index') }}" class="nav-link text-secondary">
+                                    <a href="{{ route('incidencias.index') }}" class="c">
                                         <i class="far fa-list-alt nav-icon"></i>
                                         <p>Gestión de reportes</p>
                                     </a>
@@ -102,30 +102,6 @@
                                     <a href="{{ route('incidencias.create') }}" class="nav-link text-secondary">
                                         <i class="fas fa-plus nav-icon"></i>
                                         <p>Crear reporte</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item ">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Usuarios
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-list-alt nav-icon"></i>
-                                        <p class="text-black">Lista de usuarios</p>
-                                    </a>
-                                </li>
-                             
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear producto</p>
                                     </a>
                                 </li>
                             </ul>
@@ -146,15 +122,15 @@
         </div>
         <aside class="control-sidebar control-sidebar-light">
             <div class="p-3">   
-                <a href="{{ route('usuarios.index') }}" class="dropdown-item active">
+                <a href="{{ route('usuarios.index') }}" class="nav-link text-secondary">
                     <i class="fas fa-users"></i> Usuarios
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="#" class="nav-link text-secondary">
                     <i class="fas fa-copy"></i> Proyectos
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="#" class="nav-link text-secondary">
                     <i class="fas fa-cogs"></i> Configuración
                 </a>
             </div>

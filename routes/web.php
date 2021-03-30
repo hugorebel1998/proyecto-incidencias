@@ -30,6 +30,12 @@ Route::match(['get', 'post'], 'register', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['role:admin']], function () {
+
+// Rutas de usuarios
+Route::get('/usuarios/index', 'UserController@index')->name('usuarios.index')->middleware('auth');
+Route::get('/usuarios/create', 'UserController@create')->name('usuarios.create')->middleware('auth');
+Route::post('/usuarios/store', 'UserController@store')->name('usuarios.store')->middleware('auth');
+
     //Rutas de Inicdencias
 Route::get('/incidencas/index', 'IncidenceController@index')->name('incidencias.index')->middleware('auth');
 Route::get('/incidencas/create', 'IncidenceController@create')->name('incidencias.create')->middleware('auth');
@@ -40,4 +46,4 @@ Route::post('/incidencas/update/{indidency}', 'IncidenceController@update')->nam
 Route::get('/incidencas/delete/{indidency}', 'IncidenceController@delete')->name('incidencias.delete')->middleware('auth');
 
 });
-Route::get('/usuarios/index', 'UserController@index')->name('usuarios.index')->middleware('auth');
+
