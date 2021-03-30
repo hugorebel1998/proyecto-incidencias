@@ -37,5 +37,6 @@ Route::post('/incidencas/store', 'IncidenceController@store')->name('incidencias
 Route::get('/incidencas/show/{indidency}', 'IncidenceController@show')->name('incidencias.show')->middleware('auth');
 Route::get('/incidencas/edit/{indidency}', 'IncidenceController@edit')->name('incidencias.edit')->middleware('auth');
 Route::post('/incidencas/update/{indidency}', 'IncidenceController@update')->name('incidencias.update')->middleware('auth');    
+Route::get('/incidencas/delete/{indidency}', 'IncidenceController@delete')->name('incidencias.delete')->middleware('auth');
 
 });

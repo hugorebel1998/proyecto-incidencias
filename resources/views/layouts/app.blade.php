@@ -40,27 +40,6 @@
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <p class="text-center"> {{ Auth::user()->name }}</p>
                         <span class="dropdown-header">{{ Auth::user()->email }}</span>
-                        @if (Auth::user()->role != 1)
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-user-edit"></i> Configuración
-                            </a>
-                        @else
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-users"></i> Usuarios
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-user-edit"></i> Proyectos
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-user-edit"></i> Configuración
-                            </a>
-                        @endif
-
-
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
@@ -165,10 +144,19 @@
 
             <!-- /.content -->
         </div>
-        <aside class="control-sidebar control-sidebar-dark">
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
+        <aside class="control-sidebar control-sidebar-light">
+            <div class="p-3">   
+                <a href="#" class="dropdown-item">
+                    <i class="fas fa-users"></i> Usuarios
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">
+                    <i class="fas fa-copy"></i> Proyectos
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">
+                    <i class="fas fa-cogs"></i> Configuración
+                </a>
             </div>
         </aside>
 

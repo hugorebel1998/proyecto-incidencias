@@ -44,7 +44,7 @@
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="{{ route('incidencias.show', [$incidencia->id])}}"><i class="fas fa-eye"></i> Ver reporte</a>
                                             <a class="dropdown-item" href="{{ route('incidencias.edit', [$incidencia->id])}}"><i class="fas fa-edit"></i> Editar reporte</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i> Eliminar reporte</a>
+                                            <a class="dropdown-item" onclick="return confirm('¿ Estas seguro de eliminar este reporte ?')" href="{{ route('incidencias.delete', $incidencia->id)}}"><i class="fas fa-trash-alt"></i> Eliminar reporte</a>
                                         </div>    
                                         @endcan
                                         

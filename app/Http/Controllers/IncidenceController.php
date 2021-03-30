@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\User;
 use App\Category;
 use App\Incident;
@@ -19,7 +20,7 @@ class IncidenceController extends Controller
     {
         $usuarios = User::where('role', 1)->get();
         $incidencias = Incident::all();
-        return view('incidencias.index', compact('usuarios','incidencias'));
+        return view('incidencias.index', compact('usuarios', 'incidencias'));
     }
     public function create()
     {
@@ -67,7 +68,7 @@ class IncidenceController extends Controller
         $incidencia = Incident::find($indidency);
         return view('incidencias.edit', compact('incidencia', 'categorias'));
     }
-    public function update(IncidenceRequest $request,$indidency)
+    public function update(IncidenceRequest $request, $indidency)
     {
         $incidencia = Incident::findOrfail($indidency);
 
@@ -95,5 +96,14 @@ class IncidenceController extends Controller
             toastr()->error('Error al actualizar reporte');
             return redirect()->to(route('incidencias.create'));
         }
+    }
+
+    public function delete($indidency)
+    {
+        $incidencia = Incident::findOrFail($indidency);
+        $incidencia->delete();
+
+        return redirect(route('incidencias.index'));
+
     }
 }
