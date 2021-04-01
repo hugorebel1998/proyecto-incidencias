@@ -31,19 +31,26 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['role:admin']], function () {
 
-// Rutas de usuarios
-Route::get('/usuarios/index', 'UserController@index')->name('usuarios.index')->middleware('auth');
-Route::get('/usuarios/create', 'UserController@create')->name('usuarios.create')->middleware('auth');
-Route::post('/usuarios/store', 'UserController@store')->name('usuarios.store')->middleware('auth');
+    // Rutas de usuarios
+    Route::get('/usuarios/index', 'UserController@index')->name('usuarios.index')->middleware('auth');
+    Route::get('/usuarios/create', 'UserController@create')->name('usuarios.create')->middleware('auth');
+    Route::post('/usuarios/store', 'UserController@store')->name('usuarios.store')->middleware('auth');
+    Route::get('/usuarios/show/{usuario}', 'UserController@show')->name('usuarios.show')->middleware('auth');
+    Route::get('/usuarios/edit/{usuario}', 'UserController@edit')->name('usuarios.edit')->middleware('auth');
+
+    Route::get('/usuarios/contrasena/{usuario}', 'UserController@contrasena')->name('usuarios.contrasena')->middleware('auth');
+    Route::post('/usuarios/cambiar', 'UserController@cambiar')->name('usuarios.cambiar')->middleware('auth');
+    
+    Route::post('/usuarios/update/{usuario}', 'UserController@update')->name('usuarios.update')->middleware('auth');
+    Route::get('/usuarios/delete/{usuario}', 'UserController@delete')->name('usuarios.delete')->middleware('auth');
+
 
     //Rutas de Inicdencias
-Route::get('/incidencas/index', 'IncidenceController@index')->name('incidencias.index')->middleware('auth');
-Route::get('/incidencas/create', 'IncidenceController@create')->name('incidencias.create')->middleware('auth');
-Route::post('/incidencas/store', 'IncidenceController@store')->name('incidencias.store')->middleware('auth');
-Route::get('/incidencas/show/{indidency}', 'IncidenceController@show')->name('incidencias.show')->middleware('auth');
-Route::get('/incidencas/edit/{indidency}', 'IncidenceController@edit')->name('incidencias.edit')->middleware('auth');
-Route::post('/incidencas/update/{indidency}', 'IncidenceController@update')->name('incidencias.update')->middleware('auth');    
-Route::get('/incidencas/delete/{indidency}', 'IncidenceController@delete')->name('incidencias.delete')->middleware('auth');
-
+    Route::get('/incidencas/index', 'IncidenceController@index')->name('incidencias.index')->middleware('auth');
+    Route::get('/incidencas/create', 'IncidenceController@create')->name('incidencias.create')->middleware('auth');
+    Route::post('/incidencas/store', 'IncidenceController@store')->name('incidencias.store')->middleware('auth');
+    Route::get('/incidencas/show/{indidency}', 'IncidenceController@show')->name('incidencias.show')->middleware('auth');
+    Route::get('/incidencas/edit/{indidency}', 'IncidenceController@edit')->name('incidencias.edit')->middleware('auth');
+    Route::post('/incidencas/update/{indidency}', 'IncidenceController@update')->name('incidencias.update')->middleware('auth');
+    Route::get('/incidencas/delete/{indidency}', 'IncidenceController@delete')->name('incidencias.delete')->middleware('auth');
 });
-

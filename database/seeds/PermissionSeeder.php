@@ -20,7 +20,6 @@ class PermissionSeeder extends Seeder
         // create permissions
         Permission::create(['name' => 'create report']);
         Permission::create(['name' => 'read reports']);
-        Permission::create(['name' => 'edit report']);
         Permission::create(['name' => 'update report']);
         Permission::create(['name' => 'delete report']);
 
@@ -39,7 +38,6 @@ class PermissionSeeder extends Seeder
          $role= Role::create(['name' => 'soporte']);
          $role->givePermissionTo('create report');
          $role->givePermissionTo('read reports');
-         $role->givePermissionTo('edit report');
          $role->givePermissionTo('update report');
         
     }

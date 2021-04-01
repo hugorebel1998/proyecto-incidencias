@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
     {
         $admin = User::create([
             'name' => 'Administrador',
-            'email' => 'admin@admin.com',
+            'email' => 'administrador@administrador.com',
             'password' => bcrypt('12345678'),
             'role' => '1'
         ]);
@@ -31,8 +31,8 @@ class UserSeeder extends Seeder
         $soporte->assignRole('soporte');
         
         $cliente = User::create([
-            'name' => 'Hugo Guillermo',
-            'email' => 'hugorebel1998@gmail.com',
+            'name' => 'Cliente',
+            'email' => 'cliente@cliente.com',
             'password' => bcrypt('12345678'),
             'role' => '3'
         ]);

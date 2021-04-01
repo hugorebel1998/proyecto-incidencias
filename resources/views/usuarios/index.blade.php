@@ -9,6 +9,18 @@
                         <div class="row justify-content-end">
                             <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-primary text-white mr-3"><i
                                     class="fas fa-plus complemento-plus"></i>&nbsp;&nbsp;Agregar usuario</a>
+
+                            <div class="dropdown">
+                                <button class="btn btn-sm bg-navy mr-3" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-plus"></i> Filtrar por 
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -17,42 +29,47 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Tipo de usuario</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Correo electrónico</th>
-                                    <th scope="col">Fecha de registro</th>
+                                    <th scope="col">Telefóno</th>
                                     <th scope="col" class="text-center">Administrador</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($usuarios as $usuario)
+                                
                                     <tr>
-                                        <td>{{ $usuario->id }}</td> 
-                                        <td></td>
+                                        <td>{{ $usuario->id }}</td>
                                         <td>{{ $usuario->name }}</td>
                                         <td>{{ $usuario->email }}</td>
-                                        <td>{{ $usuario->created_at }}</td>
+                                        <td>{{ $usuario->telefono }}</td>
                                         <td class="text-center">
 
                                             <div class="dropdown">
-                                                <button class="btn btn-sm btn-primary dropdown-toggle text-white"
+                                                <button class="btn btn-sm btn-success dropdown-toggle text-white"
                                                     type="button" id="dropdownMenuButton" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-cogs"></i> Acciones
                                                 </button>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href=""><i class="fas fa-eye"></i> Ver
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('usuarios.show', [$usuario->id]) }}"><i
+                                                            class="fas fa-eye"></i> Ver
                                                         usuario</a>
-                                                    <a class="dropdown-item" href=""><i class="fas fa-edit"></i> Editar
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('usuarios.edit', [$usuario->id]) }}"><i
+                                                            class="fas fa-edit"></i> Editar
                                                         usuario</a>
                                                     <a class="dropdown-item"
                                                         onclick="return confirm('¿ Estas seguro de eliminar este reporte ?')"
-                                                        href="#"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>
+                                                        href="{{ route('usuarios.delete', [$usuario->id]) }}"><i
+                                                            class="fas fa-trash-alt"></i> Eliminar usuario</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
+                                
                                 @endforeach
                             </tbody>
                         </table>

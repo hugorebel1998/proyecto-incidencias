@@ -5,50 +5,50 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\ContrasenaRequest;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth');
-        // $this->middleware('admin');
-    }
 
+        $this->middleware(['permission:create report'], ['only' => 'create', 'store']);
+        $this->middleware(['permission:read reports'], ['only' => 'index']);
+        $this->middleware(['permission:update report'], ['only' => 'edit', 'update']);
+        $this->middleware(['permission:delete report'], ['only' => 'delete']);
+    }
 
     public function index()
     {
-        $usuarios = User::where('id', '!=', 1)->get();
+        $usuarios = User::where('role', 1)->where('id', '!=', 1)->get();
         return view('usuarios.index', compact('usuarios'));
     }
     public function create()
     {
-        $usuarios = User::where('id', "!=", 2)->get();
-        return view('usuarios.create', compact('usuarios'));
+        $roles = Role::all()->pluck('name', 'id');
+        return view('usuarios.create', compact('roles'));
     }
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $usuario = new User();
-        $fecha = Carbon::now();
-        
-        $request->validate([
-            'nombre' => 'required|min:3',
-            'correo_electronico' => 'required|email|unique:users,email',
-            'contraseña' => 'required|min:8|max:15'
-        ]);
-        
-
         $usuario->name = $request->nombre;
         $usuario->email = $request->correo_electronico;
         $usuario->password = bcrypt($request->contraseña);
-        $usuario->created_at = $fecha;
+        $usuario->telefono = $request->telefóno;
+        $usuario->role = 1;
+
 
         // dd($usuario);
         if ($usuario->save()) {
+            $usuario->assignRole('soporte');
             $usuario->name = $request->nombre;
             $usuario->email = $request->correo_electronico;
-            $usuario->created_at = $fecha;
+            $usuario->password = bcrypt($request->contraseña);
+            $usuario->telefono = $request->telefóno;
 
             if ($usuario->save()) {
                 toastr()->success('Se registro nuevo usuario:' . " " . $usuario->name);
@@ -69,7 +69,6 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-
         $usuario = User::find($id);
         return view('usuarios.edit', compact('usuario'));
     }
@@ -109,5 +108,29 @@ class UserController extends Controller
         $usuario = User::findOrFail($id);
         $usuario->delete();
         return redirect()->route('usuario.index');
+    }
+
+    public function contrasena($id)
+    {
+
+        $usuario = $id;
+        return view('usuarios.contrasena', compact('usuario'));
+    }
+
+    public function cambiar(ContrasenaRequest $request)
+    {
+        $usuario = User::find($request->id);
+        $usuario->password;
+
+        if (Hash::check($request->contraseña, $usuario->password)) {
+            $usuario->password = bcrypt($request->nueva_contraseña);
+            if ($usuario->save()) {
+                toastr()->success('Cambio de contraseña con éxito');
+                return redirect()->to(route('usuarios.index'));
+            }
+        } else {
+            toastr()->error('La contraseña actual no coincide');
+            return back();
+        }
     }
 }

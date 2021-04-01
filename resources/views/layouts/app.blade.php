@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E-commerce</title>
+    <title>Incidencias</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -41,6 +41,14 @@
                         <p class="text-center"> {{ Auth::user()->name }}</p>
                         <span class="dropdown-header">{{ Auth::user()->email }}</span>
                         <div class="dropdown-divider"></div>
+                        
+                        <a class="dropdown-item" href="{{ route('usuarios.edit', auth()->user()->id) }}">
+                            <i class="fas fa-user-edit"></i> {{ __('Editar información') }}
+                        </a>    
+                        
+                        <a class="dropdown-item" href="{{ route('usuarios.contrasena', auth()->user()->id) }}">
+                            <i class="fas fa-unlock-alt"></i> {{ __('Cambiar cotraseña') }}
+                        </a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                             <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar Sesión') }}
@@ -50,12 +58,12 @@
                         </form>
                     </div>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link text-white" data-widget="control-sidebar" data-slide="true" href="#"
                         role="button">
                         <i class="fas fa-th-large"></i>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-light-navy elevation-4">
@@ -87,13 +95,36 @@
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
+                                    Usuarios
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('usuarios.index') }}" class="nav-link text-secondary">
+                                        <i class="far fa-list-alt nav-icon"></i>
+                                        <p>Gestión de usuarios</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('usuarios.create') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear usuario</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
                                     Reportes
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('incidencias.index') }}" class="c">
+                                    <a href="{{ route('incidencias.index') }}" class="nav-link text-secondary">
                                         <i class="far fa-list-alt nav-icon"></i>
                                         <p>Gestión de reportes</p>
                                     </a>
@@ -120,21 +151,21 @@
 
             <!-- /.content -->
         </div>
-        <aside class="control-sidebar control-sidebar-light">
+        {{-- <aside class="control-sidebar control-sidebar-light">
             <div class="p-3">   
-                <a href="{{ route('usuarios.index') }}" class="nav-link text-secondary">
+                <a href="" class="dropdown-item">
                     <i class="fas fa-users"></i> Usuarios
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="nav-link text-secondary">
+                <a href="#" class="dropdown-item">
                     <i class="fas fa-copy"></i> Proyectos
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="nav-link text-secondary">
+                <a href="#" class="dropdown-item">
                     <i class="fas fa-cogs"></i> Configuración
                 </a>
             </div>
-        </aside>
+        </aside> --}}
 
         <footer class="main-footer text-center">
             <strong>&copy; 2020 E-commerce </strong> Todos los derechos reservados.
