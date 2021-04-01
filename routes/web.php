@@ -44,7 +44,6 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('/usuarios/update/{usuario}', 'UserController@update')->name('usuarios.update')->middleware('auth');
     Route::get('/usuarios/delete/{usuario}', 'UserController@delete')->name('usuarios.delete')->middleware('auth');
 
-
     //Rutas de Inicdencias
     Route::get('/incidencas/index', 'IncidenceController@index')->name('incidencias.index')->middleware('auth');
     Route::get('/incidencas/create', 'IncidenceController@create')->name('incidencias.create')->middleware('auth');
@@ -53,4 +52,12 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/incidencas/edit/{indidency}', 'IncidenceController@edit')->name('incidencias.edit')->middleware('auth');
     Route::post('/incidencas/update/{indidency}', 'IncidenceController@update')->name('incidencias.update')->middleware('auth');
     Route::get('/incidencas/delete/{indidency}', 'IncidenceController@delete')->name('incidencias.delete')->middleware('auth');
+
+    //Rutas proyecto
+    Route::get('/proyectos/index', 'ProyectController@index')->name('proyectos.index')->middleware('auth');
+    Route::get('/proyectos/create', 'ProyectController@create')->name('proyectos.create')->middleware('auth');
+    Route::post('/proyectos/store', 'ProyectController@store')->name('proyectos.store')->middleware('auth');
+    Route::get('/proyectos/show/{project}', 'ProyectController@show')->name('proyectos.show')->middleware('auth');
+    Route::get('/proyectos/edit/{project}', 'ProyectController@edit')->name('proyectos.edit')->middleware('auth');
+    Route::post('/proyectos/update/{project}', 'ProyectController@update')->name('proyectos.update')->middleware('auth');
 });

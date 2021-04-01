@@ -41,11 +41,11 @@
                         <p class="text-center"> {{ Auth::user()->name }}</p>
                         <span class="dropdown-header">{{ Auth::user()->email }}</span>
                         <div class="dropdown-divider"></div>
-                        
+
                         <a class="dropdown-item" href="{{ route('usuarios.edit', auth()->user()->id) }}">
                             <i class="fas fa-user-edit"></i> {{ __('Editar información') }}
-                        </a>    
-                        
+                        </a>
+
                         <a class="dropdown-item" href="{{ route('usuarios.contrasena', auth()->user()->id) }}">
                             <i class="fas fa-unlock-alt"></i> {{ __('Cambiar cotraseña') }}
                         </a>
@@ -137,6 +137,29 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Proyectos
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('proyectos.index') }}" class="nav-link text-secondary">
+                                        <i class="far fa-list-alt nav-icon"></i>
+                                        <p>Gestión de proyectos</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('proyectos.create') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear proyecto</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -186,12 +209,12 @@
     <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- AdminLTE App -->
-
     <!-- SweetAlert2 -->
     <script src="{{ asset('admin-lte/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
     <script src="{{ asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('admin-lte/dist/js/demo.js') }} "></script>
 
     <!-- jquery-ui -->
     <!-- <script src="{{ asset('admin-lte/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
@@ -273,6 +296,11 @@
             })
         });
 
+    </script>
+    <script>
+        $(function(){
+            $('#my-card').on('expanded.lte.cardwidget', handleExpandedEvent)
+        });
     </script>
 
 </body>
