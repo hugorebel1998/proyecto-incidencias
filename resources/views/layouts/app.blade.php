@@ -93,7 +93,7 @@
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-th"></i>
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Usuarios
                                     <i class="right fas fa-angle-left"></i>
@@ -116,7 +116,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-th"></i>
+                                <i class="nav-icon fas fa-atlas"></i>
                                 <p>
                                     Reportes
                                     <i class="right fas fa-angle-left"></i>
@@ -139,7 +139,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-th"></i>
+                                <i class="nav-icon fas fa-folder-open"></i>
                                 <p>
                                     Proyectos
                                     <i class="right fas fa-angle-left"></i>
@@ -156,6 +156,52 @@
                                     <a href="{{ route('proyectos.create') }}" class="nav-link text-secondary">
                                         <i class="fas fa-plus nav-icon"></i>
                                         <p>Crear proyecto</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-dice-d6"></i>
+                                <p>
+                                    Categorias
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('categorias.index') }}" class="nav-link text-secondary">
+                                        <i class="far fa-list-alt nav-icon"></i>
+                                        <p>Gestión de categorias</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('categorias.create') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear categoria</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-sort-amount-up"></i>
+                                <p>
+                                    Niveles
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('proyectos.index') }}" class="nav-link text-secondary">
+                                        <i class="far fa-list-alt nav-icon"></i>
+                                        <p>Gestión de niveles</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('proyectos.create') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear nivel</p>
                                     </a>
                                 </li>
                             </ul>
@@ -296,11 +342,6 @@
             })
         });
 
-    </script>
-    <script>
-        $(function(){
-            $('#my-card').on('expanded.lte.cardwidget', handleExpandedEvent)
-        });
     </script>
 
 </body>

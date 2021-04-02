@@ -60,4 +60,13 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/proyectos/show/{project}', 'ProyectController@show')->name('proyectos.show')->middleware('auth');
     Route::get('/proyectos/edit/{project}', 'ProyectController@edit')->name('proyectos.edit')->middleware('auth');
     Route::post('/proyectos/update/{project}', 'ProyectController@update')->name('proyectos.update')->middleware('auth');
+
+    Route::get('/categorias/index', 'CategoryController@index')->name('categorias.index')->middleware('auth');
+    Route::get('/categorias/create', 'CategoryController@create')->name('categorias.create')->middleware('auth');
+    Route::post('/categorias/store', 'CategoryController@store')->name('categorias.store')->middleware('auth');
+    Route::get('/categorias/show/{category}', 'CategoryController@show')->name('categorias.show')->middleware('auth');
+    Route::get('/categorias/edit/{category}', 'CategoryController@edit')->name('categorias.edit')->middleware('auth');
+    Route::post('/categorias/update/{category}', 'CategoryController@update')->name('categorias.update')->middleware('auth');
+
+
 });
