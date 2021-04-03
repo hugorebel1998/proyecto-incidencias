@@ -29,7 +29,7 @@ class UserController extends Controller
     }
     public function create()
     {
-        $roles = Role::all()->pluck('name', 'id');
+        $roles = Role::all();
         return view('usuarios.create', compact('roles'));
     }
     public function store(UserRequest $request)
@@ -41,7 +41,6 @@ class UserController extends Controller
         $usuario->telefono = $request->telefóno;
         $usuario->role = 1;
 
-
         // dd($usuario);
         if ($usuario->save()) {
             $usuario->assignRole('soporte');
@@ -51,7 +50,7 @@ class UserController extends Controller
             $usuario->telefono = $request->telefóno;
 
             if ($usuario->save()) {
-                toastr()->success('Se registro nuevo usuario:' . " " . $usuario->name);
+                toastr()->success('Se registro nuevo usuario');
                 return redirect()->route('usuarios.index');
             } else {
                 toastr()->error('Error al crear usuario');
@@ -77,20 +76,23 @@ class UserController extends Controller
 
         $usuario = User::findOrFail($id);
         $request->validate([
-            'name' => 'required|min:3',
-            'email' => 'required|email|unique:users,email,' . $usuario->id,
+            'nombre' => 'required|min:3',
+            'correo_electronico' => 'required|email|unique:users,email,' . $usuario->id,
+            'telefóno' => 'max:10|required'
         ]);
 
-        $usuario->name = $request->name;
-        $usuario->email = $request->email;
+        $usuario->name = $request->nombre;
+        $usuario->email = $request->correo_electronico;
+        $usuario->telefono = $request->telefóno;
 
 
         if ($usuario->save()) {
-            $usuario->name = $request->name;
-            $usuario->email = $request->email;
+            $usuario->name = $request->nombre;
+            $usuario->email = $request->correo_electronico;
+            $usuario->telefono = $request->telefóno;
 
             if ($usuario->save()) {
-                toastr()->success('Se actualizo usuario:' . " " . $usuario->name);
+                toastr()->info('Se actualizo usuario: ' .$usuario->name);
                 return redirect()->route('usuarios.index');
             } else {
                 toastr()->error('Error al crear usuario');

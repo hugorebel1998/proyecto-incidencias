@@ -33,13 +33,13 @@
                                     <b>{{ $usuario->email }}</b>
                                 </p>
                             </div>
-                            <div class="col-md-6 pt-4">
+                            {{-- <div class="col-md-6 pt-4">
                                 <p>
                                     <i class="fas fa-user"></i>
                                     Tipo de usuario:
                                     <b></b>
                                 </p>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="text-center mt-5">
                             <a href="{{ route('usuarios.index') }} " class="btn btn-sm btn-info text-white"><i

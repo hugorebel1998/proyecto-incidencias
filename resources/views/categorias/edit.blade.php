@@ -7,7 +7,7 @@
                     <h3 class="text-center text-navy mt-3"><i class="fas fa-file"></i> Editar categoria</h3>
                     <hr>
                     <div class="card-body">
-                        <form action="{{ route('categorias.update', [$categoria->id]) }}" method="POST">
+                        <form action="{{ route('categorias.update', $categoria->id) }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 pb-2">
@@ -19,17 +19,17 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="id_category">Nombre del proyecto</label>
+                                {{-- <div class="col-md-6">
+                                    <label for="id_project">Nombre del proyecto</label>
                                     <select disabled name="id_project"
                                         class="form-control select2"
                                         style="width: 100%;">
                                         <option value="">--Seleciona una opción--</option>
-                                                <option value="" selected> {{ $proyecto->name }}
+                                                <option value="{{ $proyecto->id}}" selected> {{ $proyecto->name }}
                                                 </option>
                                         </option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-12 mt-3">
                                     <label for="descripción">Descripción</label>
                                     <textarea name="descripción"

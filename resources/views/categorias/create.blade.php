@@ -27,10 +27,10 @@
                                         <option value="">--Seleciona una opción--</option>
                                         @foreach ($proyectos as $proyecto)
                                             @if ($loop->first)
-                                                <option value="{{ $proyecto->id }}" selected> {{ $proyecto->name }}
+                                                <option value="{{ $proyecto->id}}" selected> {{ $proyecto->name }}
                                                 </option>
                                             @else
-                                                <option value="{{ $proyecto->id }}"> {{ $proyecto->name }}</option>
+                                                <option value="{{ $proyecto->id}}"> {{ $proyecto->name}}</option>
                                             @endif
                                         @endforeach
                                         </option>

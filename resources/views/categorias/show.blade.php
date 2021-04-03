@@ -24,11 +24,14 @@
                             </div>
 
                             <div class="col-md-12">
+                              
                                 <p>
                                     <i class="fas fa-signature"></i>
                                     ID de proyecto asignado:
-                                    <b>{{ $categoria->id_project }}</b>
-                                </p>
+                                    <b>{{ $proyecto->name }}</b>
+                                </p>    
+                              
+                                
                             </div>
 
                         </div>

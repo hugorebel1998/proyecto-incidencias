@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Category;
@@ -17,7 +18,8 @@ class CategoryController extends Controller
     }
     public function create()
     {
-        $proyectos = Project::all();
+        // $proyectos = Project::all();
+        $proyectos = Project::select('id', 'name')->get();
         return view('categorias.create', compact('proyectos'));
     }
     public function store(CategoryRequest $request)
@@ -45,42 +47,49 @@ class CategoryController extends Controller
         }
     }
 
-    public function show($category)
+    public function show($id_project)
     {
-        $categoria = Category::findOrfail($category);
-        return view('categorias.show', compact('categoria'));
+        $categoria = Category::findOrFail($id_project);
+        $proyecto = Project::findOrFail($categoria->id_project);
+        return view('categorias.show', compact('categoria', 'proyecto'));
     }
 
-    public function edit($id)
+    public function edit($category)
     {
-        $categoria = Category::find($id);
-        $proyecto = Project::find($categoria->id_project);
-        return view('categorias.edit', compact('categoria', 'proyecto'));
+        $categoria = Category::findOrFail($category);
+
+        return view('categorias.edit', compact('categoria'));
     }
     public function update(CategoryRequest $request, $id)
     {
-
         $categoria = Category::findOrFail($id);
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'id_project' => 'required'.$categoria->id_project
+        ]);
+
+        
         $categoria->name = $request->nombre_categoria;
         $categoria->description = $request->descripción;
         // $categoria->id_project = $request->id_project;
-        dd($categoria);
-    //     if ($categoria->save()) {
-    //         $categoria->name = $request->nombre_categoria;
-    //         $categoria->description = $request->descripción;
-    //         // $categoria->id_project = $request->id_project;
-    //         // $proyecto->fecha_inicio = $fecha;
+        // dd($categoria);
+            if ($categoria->save()) {
+                $categoria->name = $request->nombre_categoria;
+                $categoria->description = $request->descripción;
+                // $categoria->id_project = $request->id_project;
+                // $proyecto->fecha_inicio = $fecha;
 
-    //         if ($categoria->save()) {
-    //             toastr()->info('Se actualizó la categoria:' . " " . $categoria->name);
-    //             return redirect()->route('categorias.index');
-    //         } else {
-    //             toastr()->error('Error al actualizar la ctegoria');
-    //             return redirect()->back();
-    //         }
-    //     } else {
-    //         toastr()->error('Error al actualizar la categoria');
-    //         return redirect(route('categorias.create'));
-    //     }
+                if ($categoria->save()) {
+                    toastr()->info('Se actualizó la categoria:' . " " . $categoria->name);
+                    return redirect()->route('categorias.index');
+                } else {
+                    toastr()->error('Error al actualizar la ctegoria');
+                    return redirect()->back();
+                }
+            } else {
+                toastr()->error('Error al actualizar la categoria');
+                return redirect(route('categorias.create'));
+            }
     }
 }

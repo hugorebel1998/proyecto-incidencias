@@ -62,17 +62,16 @@
                                     <select name="role" class="form-control select2" style="width: 100%;" required>
                                         @foreach ($roles as $role)
                                         @if ($loop->first)
-                                            <option value="{{ $role }}" selected="selected">
-                                                {{ $role }}
+                                            <option value="{{ $role->id }}" selected="selected">
+                                                {{ $role->name }}
                                             </option>
                                         @else
-                                            <option value="{{ $role }}">{{ $role }}
+                                            <option value="{{ $role->id }}">{{ $role->name }}
                                             </option>
                                         @endif
                                     @endforeach
                                     </select>
                                 </div> --}}
-
                             </div>
                             <div class="text-center mt-4">
                                 <button type="submit" class="btn btn-sm btn-primary">Guardar</button>

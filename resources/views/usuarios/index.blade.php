@@ -9,18 +9,6 @@
                         <div class="row justify-content-end">
                             <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-primary text-white mr-3"><i
                                     class="fas fa-plus complemento-plus"></i>&nbsp;&nbsp;Agregar usuario</a>
-
-                            <div class="dropdown">
-                                <button class="btn btn-sm bg-navy mr-3" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-plus"></i> Filtrar por 
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -32,6 +20,7 @@
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Correo electrónico</th>
                                     <th scope="col">Telefóno</th>
+                                    
                                     <th scope="col" class="text-center">Administrador</th>
                                 </tr>
                             </thead>
@@ -43,10 +32,11 @@
                                         <td>{{ $usuario->name }}</td>
                                         <td>{{ $usuario->email }}</td>
                                         <td>{{ $usuario->telefono }}</td>
+                                    
                                         <td class="text-center">
 
                                             <div class="dropdown">
-                                                <button class="btn btn-sm btn-success dropdown-toggle text-white"
+                                                <button class="btn btn-sm bg-navy dropdown-toggle text-white"
                                                     type="button" id="dropdownMenuButton" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-cogs"></i> Acciones
