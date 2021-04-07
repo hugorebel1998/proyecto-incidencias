@@ -18,31 +18,42 @@
                                 <tr>
                                     <th scope="col">No.Reporte</th>
                                     <th scope="col">Categoria</th>
+                                    <th scope="col">Titulo</th>
                                     <th scope="col">Severidad</th>
                                     <th scope="col">Descripción</th>
                                     <th scope="col" class="text-center">Administrador</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="text-center">
-                                        <div class="dropdown">
-                                            <button class="btn btn-sm btn-info dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                              Acciones
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                              <a class="dropdown-item" href="#">Action</a>
-                                              <a class="dropdown-item" href="#">Another action</a>
-                                              <a class="dropdown-item" href="#">Something else here</a>
-                                            </div>
-                                          </div>
-                                    </td>
-                                </tr>
+                                @foreach ($incidencias as $incidencia)
+                                    <tr>
+                                        <td>{{ $incidencia->id }}</td>
+                                        <td>{{ $incidencia->id_category }}</td>
+                                        <td>{{ $incidencia->title }}</td>
+                                        <td>{{ $incidencia->severity }}</td>
+                                        <td>{{ $incidencia->description }}</td>
+                                        <td class="text-center">
+                                    
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-primary dropdown-toggle text-white" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            <i class="fas fa-cogs"></i> Acciones
+                                        </button>
+                                        @can('update report')
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="{{ route('incidencias.show', [$incidencia->id])}}"><i class="fas fa-eye"></i> Ver reporte</a>
+                                            <a class="dropdown-item" href="{{ route('incidencias.edit', [$incidencia->id])}}"><i class="fas fa-edit"></i> Editar reporte</a>
+                                            <a class="dropdown-item" onclick="return confirm('¿ Estas seguro de eliminar este reporte ?')" href="{{ route('incidencias.delete', $incidencia->id)}}"><i class="fas fa-trash-alt"></i> Eliminar reporte</a>
+                                        </div>    
+                                        @endcan
+                                        
+                                    </div>
+                                    
+                                            
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

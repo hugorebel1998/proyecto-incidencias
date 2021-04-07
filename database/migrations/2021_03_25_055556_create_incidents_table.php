@@ -19,13 +19,16 @@ class CreateIncidentsTable extends Migration
             $table->string('description');
             $table->string('severity');
             
-            $table->unsignedBigInteger('id_category');
-            $table->unsignedBigInteger('id_level');
-            $table->unsignedBigInteger('id_client');
-            $table->unsignedBigInteger('id_support');
-
+            $table->unsignedBigInteger('id_category')->nullable();
+            $table->unsignedBigInteger('id_project')->nullable();
+            $table->unsignedBigInteger('id_level')->nullable();
+            $table->unsignedBigInteger('id_client')->nullable();
+            $table->unsignedBigInteger('id_support')->nullable();
+            
+            $table->softDeletes();
             $table->timestamps();
             $table->foreign('id_category')->references('id')->on('categories');
+            $table->foreign('id_project')->references('id')->on('projects');
             $table->foreign('id_level')->references('id')->on('levels');
             $table->foreign('id_client')->references('id')->on('users');
             $table->foreign('id_support')->references('id')->on('users');
