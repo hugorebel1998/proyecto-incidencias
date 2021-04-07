@@ -13,7 +13,8 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categorias = Category::select('id', 'name')->get();
+        $categorias = Category::all();
+        // $proyecto = Project::findOrFail($categorias->id_project);
         return view('categorias.index', compact('categorias'));
     }
     public function create()

@@ -116,6 +116,29 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-dice-d6"></i>
+                                <p>
+                                    Categorias
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('categorias.index') }}" class="nav-link text-secondary">
+                                        <i class="far fa-list-alt nav-icon"></i>
+                                        <p>Gestión de categorias</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('categorias.create') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Crear categoria</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-atlas"></i>
                                 <p>
                                     Reportes
@@ -162,29 +185,6 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-dice-d6"></i>
-                                <p>
-                                    Categorias
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('categorias.index') }}" class="nav-link text-secondary">
-                                        <i class="far fa-list-alt nav-icon"></i>
-                                        <p>Gestión de categorias</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('categorias.create') }}" class="nav-link text-secondary">
-                                        <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear categoria</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-sort-amount-up"></i>
                                 <p>
                                     Niveles
@@ -193,13 +193,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('proyectos.index') }}" class="nav-link text-secondary">
+                                    <a href="{{ route('niveles.index') }}" class="nav-link text-secondary">
                                         <i class="far fa-list-alt nav-icon"></i>
                                         <p>Gestión de niveles</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('proyectos.create') }}" class="nav-link text-secondary">
+                                    <a href="{{ route('niveles.create') }}" class="nav-link text-secondary">
                                         <i class="fas fa-plus nav-icon"></i>
                                         <p>Crear nivel</p>
                                     </a>

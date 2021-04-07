@@ -1,15 +1,14 @@
 @extends('layouts.app')
 @section('content')
-
     <div class="container-fluid mt-5">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card transparente">
                     <div class="card-header">
-                        <b class="lead font-weight-bold text-primary"> Lista de categorias</b>
+                        <b class="lead font-weight-bold text-primary"> Lista de niveles</b>
                         <div class="row justify-content-end">
-                            <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-primary text-white mr-3"><i
-                                    class="fas fa-plus complemento-plus"></i>&nbsp;&nbsp;Agregar categoria</a>
+                            <a href="{{ route('proyectos.create') }}" class="btn btn-sm btn-primary text-white mr-3"><i
+                                    class="fas fa-plus complemento-plus"></i>&nbsp;&nbsp;Agregar nivel</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -19,21 +18,14 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Descripcion</th>
-                                    <td scope="col">Nombre de proyecto</td>
                                     <th scope="col" class="text-center">Administrador</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categorias as $categoria)
+                                @foreach ($niveles as $nivel)
                                     <tr>
-                                        <td>{{ $categoria->id }}</td>
-                                        <td>{{ $categoria->name }}</td>
-                                        <td>{{ $categoria->description ?: 'Aun no se asigna una descripción' }}</td>
-                                        
-                                            <td>Nombre</td>
-                                        
-
+                                        <td>{{ $nivel->id }}</td>
+                                        <td>{{ $nivel->name }}</td>
                                         <td class="text-center">
                                             <div class="dropdown">
                                                 <button class="btn btn-sm btn-success dropdown-toggle text-white"
@@ -43,17 +35,10 @@
                                                 </button>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('categorias.show', [$categoria->id]) }}"><i
-                                                            class="fas fa-eye"></i> Ver
-                                                        categoria</a>
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('categorias.edit', [$categoria->id]) }}"><i
-                                                            class="fas fa-edit"></i> Editar
-                                                        categoria</a>
-                                                    <a class="dropdown-item"
-                                                        onclick="return confirm('¿ Estas seguro de eliminar este reporte ?')"
-                                                        href="#"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-eye"></i> Ver
+                                                        usuario</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Editar
+                                                        usuario</a>
                                                 </div>
                                             </div>
                                         </td>

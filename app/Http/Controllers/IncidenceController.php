@@ -45,7 +45,7 @@ class IncidenceController extends Controller
             $incidencia->id_client = auth()->user()->id;
 
             if ($incidencia->save()) {
-                toastr()->success('Se registro reporte :<b>' . " " . $incidencia->title . '</b>');
+                toastr()->success('Se registro reporte');
                 return redirect()->to(route('incidencias.index'));
             } else {
                 toastr()->error('Error al registrar reporte');
@@ -86,7 +86,7 @@ class IncidenceController extends Controller
             $incidencia->id_client = auth()->user()->id;
 
             if ($incidencia->save()) {
-                toastr()->success('Se actualizo reporte :<b>' . " " . $incidencia->title . '</b>');
+                toastr()->info('Se actualizo reporte :<b>' . " " . $incidencia->title . '</b>');
                 return redirect()->to(route('incidencias.index'));
             } else {
                 toastr()->error('Error al actualizar reporte');

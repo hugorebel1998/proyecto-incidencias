@@ -35,19 +35,31 @@
                                         class="form-control select2 @error('id_category') is-invalid @enderror"
                                         style="width: 100%;">
                                         <option value="">--Seleciona una opción--</option>
-                                        <option value="" selected>
-
-                                        </option>
+                                        @foreach ($categorias as $categoria)
+                                            @if ($loop->first)
+                                                <option value="{{ $categoria->id }}" selected> {{ $categoria->name }}
+                                                </option>
+                                            @else
+                                                <option value="{{ $categoria->id }}"> {{ $categoria->name }}
+                                            @endif
+                                        @endforeach
                                     </select>
 
                                 </div>
                                 <div class="col-md-6 mt-3">
-                                    <label for="id_category">Selecion de nivel</label>
-                                    <select name="id_category"
-                                        class="form-control select2 @error('id_category') is-invalid @enderror"
+                                    <label for="id_level">Selecion de nivel</label>
+                                    <select name="id_level"
+                                        class="form-control select2 @error('id_level') is-invalid @enderror"
                                         style="width: 100%;">
                                         <option value="">--Seleciona una opción--</option>
-                                        <option value="" selected>
+                                        @foreach ($niveles as $nivel)
+                                            @if ($loop->first)
+                                                <option value="{{ $nivel->id }}" selected> {{ $nivel->name }}
+                                                </option>
+                                            @else
+                                                <option value="{{ $nivel->id }}"> {{ $nivel->name }}
+                                            @endif
+                                        @endforeach
 
                                         </option>
                                     </select>

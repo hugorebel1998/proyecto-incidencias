@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Project;
+use App\Category;
+use App\Level;
 use App\Http\Requests\ProjectRequest;
 use Carbon\Carbon;
 
@@ -19,7 +21,9 @@ class ProyectController extends Controller
 
     public function create()
     {
-        return view('proyectos.create');
+        $categorias = Category::select('id', 'name')->get();
+        $niveles = Level::select('id', 'name')->get();
+        return view('proyectos.create', compact('categorias', 'niveles'));
     }
 
 
@@ -37,7 +41,7 @@ class ProyectController extends Controller
             $proyecto->fecha_inicio = $fecha;
 
             if ($proyecto->save()) {
-                toastr()->success('Se registro nuevo proyecto:' . " " . $proyecto->name);
+                toastr()->success('Se registro nuevo proyecto');
                 return redirect()->route('proyectos.index');
             } else {
                 toastr()->error('Error al crear proyecto');
@@ -75,7 +79,7 @@ class ProyectController extends Controller
             // $proyecto->fecha_inicio = $fecha;
 
             if ($proyecto->save()) {
-                toastr()->success('Se actualizó nuevo proyecto:' . " " . $proyecto->name);
+                toastr()->info('Se actualizó nuevo proyecto:' . " " . $proyecto->name);
                 return redirect()->route('proyectos.index');
             } else {
                 toastr()->error('Error al actualizar proyecto');

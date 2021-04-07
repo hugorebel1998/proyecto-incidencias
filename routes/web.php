@@ -61,6 +61,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/proyectos/edit/{project}', 'ProyectController@edit')->name('proyectos.edit')->middleware('auth');
     Route::post('/proyectos/update/{project}', 'ProyectController@update')->name('proyectos.update')->middleware('auth');
 
+    //Rutas categorias
     Route::get('/categorias/index', 'CategoryController@index')->name('categorias.index')->middleware('auth');
     Route::get('/categorias/create', 'CategoryController@create')->name('categorias.create')->middleware('auth');
     Route::post('/categorias/store', 'CategoryController@store')->name('categorias.store')->middleware('auth');
@@ -68,5 +69,13 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/categorias/edit/{category}', 'CategoryController@edit')->name('categorias.edit')->middleware('auth');
     Route::post('/categorias/update/{category}', 'CategoryController@update')->name('categorias.update')->middleware('auth');
 
+
+    //Rutas niveles
+    Route::get('/niveles/index', 'NivelController@index')->name('niveles.index')->middleware('auth');
+    Route::get('/niveles/create', 'NivelController@create')->name('niveles.create')->middleware('auth');
+    Route::post('/niveles/store', 'NivelController@store')->name('niveles.store')->middleware('auth');
+    Route::get('/niveles/show/{category}', 'NivelController@show')->name('niveles.show')->middleware('auth');
+    Route::get('/niveles/edit/{category}', 'NivelController@edit')->name('niveles.edit')->middleware('auth');
+    Route::post('/niveles/update/{category}', 'NivelController@update')->name('niveles.update')->middleware('auth');
 
 });
