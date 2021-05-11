@@ -1,14 +1,15 @@
 @extends('layouts.app')
 @section('content')
+
     <div class="container-fluid mt-5">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card transparente">
                     <div class="card-header">
-                        <b class="lead font-weight-bold text-primary">Lista de usuarios</b>
+                        <b class="lead font-weight-bold text-primary"> Lista de categorias</b>
                         <div class="row justify-content-end">
-                            <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-primary text-white mr-3"><i
-                                    class="fas fa-plus complemento-plus"></i>&nbsp;&nbsp;Agregar usuario</a>
+                            <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-primary text-white mr-3"><i
+                                    class="fas fa-plus complemento-plus"></i>&nbsp;&nbsp;Agregar categoria</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -18,25 +19,24 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Correo electrónico</th>
-                                    <th scope="col">Telefóno</th>
-                                    
+                                    <th scope="col">Descripcion</th>
+                                    <td scope="col">Nombre de proyecto</td>
                                     <th scope="col" class="text-center">Administrador</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($usuarios as $usuario)
-                                
+                                @foreach ($categorias as $categoria)
                                     <tr>
-                                        <td>{{ $usuario->id }}</td>
-                                        <td>{{ $usuario->name }}</td>
-                                        <td>{{ $usuario->email }}</td>
-                                        <td>{{ $usuario->telefono }}</td>
-                                    
-                                        <td class="text-center">
+                                        <td>{{ $categoria->id }}</td>
+                                        <td>{{ $categoria->name }}</td>
+                                        <td>{{ $categoria->description ?: 'Aun no se asigna una descripción' }}</td>
+                                        
+                                            <td>Nombre</td>
+                                        
 
+                                        <td class="text-center">
                                             <div class="dropdown">
-                                                <button class="btn btn-sm bg-navy dropdown-toggle text-white"
+                                                <button class="btn btn-sm btn-success dropdown-toggle text-white"
                                                     type="button" id="dropdownMenuButton" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-cogs"></i> Acciones
@@ -44,22 +44,21 @@
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item"
-                                                        href="{{ route('usuarios.show', [$usuario->id]) }}"><i
+                                                        href="{{ route('categorias.show', [$categoria->id]) }}"><i
                                                             class="fas fa-eye"></i> Ver
-                                                        usuario</a>
+                                                        categoria</a>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('usuarios.edit', [$usuario->id]) }}"><i
+                                                        href="{{ route('categorias.edit', [$categoria->id]) }}"><i
                                                             class="fas fa-edit"></i> Editar
-                                                        usuario</a>
+                                                        categoria</a>
                                                     <a class="dropdown-item"
                                                         onclick="return confirm('¿ Estas seguro de eliminar este reporte ?')"
-                                                        href="{{ route('usuarios.delete', [$usuario->id]) }}"><i
-                                                            class="fas fa-trash-alt"></i> Eliminar usuario</a>
+                                                        href="#"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                
+
                                 @endforeach
                             </tbody>
                         </table>

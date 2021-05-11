@@ -5,10 +5,10 @@
             <div class="col-md-10">
                 <div class="card transparente">
                     <div class="card-header">
-                        <b class="lead font-weight-bold text-primary">Lista de usuarios</b>
+                        <b class="lead font-weight-bold text-primary"> Lista de niveles</b>
                         <div class="row justify-content-end">
-                            <a href="{{ route('usuarios.create') }}" class="btn btn-sm btn-primary text-white mr-3"><i
-                                    class="fas fa-plus complemento-plus"></i>&nbsp;&nbsp;Agregar usuario</a>
+                            <a href="{{ route('proyectos.create') }}" class="btn btn-sm btn-primary text-white mr-3"><i
+                                    class="fas fa-plus complemento-plus"></i>&nbsp;&nbsp;Agregar nivel</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -18,48 +18,32 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Correo electrónico</th>
-                                    <th scope="col">Telefóno</th>
-                                    
                                     <th scope="col" class="text-center">Administrador</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($usuarios as $usuario)
-                                
+                                @foreach ($niveles as $nivel)
                                     <tr>
-                                        <td>{{ $usuario->id }}</td>
-                                        <td>{{ $usuario->name }}</td>
-                                        <td>{{ $usuario->email }}</td>
-                                        <td>{{ $usuario->telefono }}</td>
-                                    
+                                        <td>{{ $nivel->id }}</td>
+                                        <td>{{ $nivel->name }}</td>
                                         <td class="text-center">
-
                                             <div class="dropdown">
-                                                <button class="btn btn-sm bg-navy dropdown-toggle text-white"
+                                                <button class="btn btn-sm btn-success dropdown-toggle text-white"
                                                     type="button" id="dropdownMenuButton" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-cogs"></i> Acciones
                                                 </button>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('usuarios.show', [$usuario->id]) }}"><i
-                                                            class="fas fa-eye"></i> Ver
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-eye"></i> Ver
                                                         usuario</a>
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('usuarios.edit', [$usuario->id]) }}"><i
-                                                            class="fas fa-edit"></i> Editar
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Editar
                                                         usuario</a>
-                                                    <a class="dropdown-item"
-                                                        onclick="return confirm('¿ Estas seguro de eliminar este reporte ?')"
-                                                        href="{{ route('usuarios.delete', [$usuario->id]) }}"><i
-                                                            class="fas fa-trash-alt"></i> Eliminar usuario</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                
+
                                 @endforeach
                             </tbody>
                         </table>

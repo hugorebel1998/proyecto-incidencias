@@ -14,11 +14,10 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->charset = 'utf8mb4';
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('description');
+            $table->dateTime('fecha_inicio')->nullable();
             $table->timestamps();
         });
     }
