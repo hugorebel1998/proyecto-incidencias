@@ -29,7 +29,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-6 mt-3">
+                                {{-- <div class="col-md-6 mt-3">
                                     <label for="id_category">Selecion de categoria</label>
                                     <select name="id_category"
                                         class="form-control select2 @error('id_category') is-invalid @enderror"
@@ -45,8 +45,8 @@
                                         @endforeach
                                     </select>
 
-                                </div>
-                                <div class="col-md-6 mt-3">
+                                </div> --}}
+                                {{-- <div class="col-md-6 mt-3">
                                     <label for="id_level">Selecion de nivel</label>
                                     <select name="id_level"
                                         class="form-control select2 @error('id_level') is-invalid @enderror"
@@ -63,7 +63,7 @@
 
                                         </option>
                                     </select>
-                                </div>
+                                </div> --}}
 
 
                                 <div class="col-md-12 mt-3">

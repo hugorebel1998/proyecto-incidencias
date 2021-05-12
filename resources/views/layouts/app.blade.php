@@ -114,7 +114,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-dice-d6"></i>
                                 <p>
@@ -136,7 +136,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-atlas"></i>
@@ -181,9 +181,15 @@
                                         <p>Crear proyecto</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('proyectos.eliminados') }}" class="nav-link text-secondary">
+                                        <i class="fas fa-ban nav-icon"></i>
+                                        <p>Proyectos eliminados</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-sort-amount-up"></i>
                                 <p>
@@ -205,7 +211,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
             </div>

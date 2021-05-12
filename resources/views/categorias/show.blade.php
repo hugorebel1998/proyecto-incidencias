@@ -22,7 +22,7 @@
                                     <b>{{ $categoria->description}}</b>
                                 </p>
                             </div>
-
+{{-- 
                             <div class="col-md-12">
                               
                                 <p>
@@ -32,7 +32,7 @@
                                 </p>    
                               
                                 
-                            </div>
+                            </div> --}}
 
                         </div>
                         <div class="text-center mt-5">

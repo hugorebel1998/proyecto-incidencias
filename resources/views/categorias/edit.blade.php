@@ -10,7 +10,7 @@
                         <form action="{{ route('categorias.update', $categoria->id) }}" method="POST">
                             @csrf
                             <div class="row">
-                                <div class="col-md-6 pb-2">
+                                <div class="col-md-12 pb-2">
                                     <label for="nombre_categoria">Nombre de categoria</label>
                                     <input type="hidden" name="id" value="{{ $categoria->id }}">
                                     <input type="text" class="form-control @error('nombre_categoria') is-invalid @enderror"

@@ -1,5 +1,141 @@
 @extends('layouts.app')
 @section('content')
+
+    <div class="container-fluid mt-4">
+
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card card-navy collapsed-card">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-cubes"></i> Categorias</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-right">
+                                    <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-primary"><i
+                                            class="fas fa-plus"></i> Crear categoria</a>
+                                </div>
+                                <table class="order-table table table-hover" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Descripcion</th>
+                                            <th scope="col" class="text-center">Administrador</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($categorias as $categoria)
+                                            <tr>
+                                                <td>{{ $categoria->id }}</td>
+                                                <td>{{ $categoria->name }}</td>
+                                                <td>{{ $categoria->description ?: 'Aun no se asigna una descripción' }}
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-sm btn-success dropdown-toggle text-white"
+                                                            type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-cogs"></i> Acciones
+                                                        </button>
+
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('categorias.show', [$categoria->id]) }}"><i
+                                                                    class="fas fa-eye"></i> Ver
+                                                                categoria</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('categorias.edit', [$categoria->id]) }}"><i
+                                                                    class="fas fa-edit"></i> Editar
+                                                                categoria</a>
+                                                            <a class="dropdown-item"
+                                                                onclick="return confirm('¿ Estas seguro de eliminar este reporte ?')"
+                                                                href="#"><i class="fas fa-trash-alt"></i> Eliminar
+                                                                usuario</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card card-navy collapsed-card">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-sort-amount-up"></i> Niveles</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-right">
+                                    <a href="{{ route('niveles.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Agregar nivel</a>
+                                </div>
+                                <table class="order-table table table-hover" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col" class="text-center">Administrador</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($niveles as $nivel)
+                                            <tr>
+                                                <td>{{ $nivel->id }}</td>
+                                                <td>{{ $nivel->name }}</td>
+                                                <td class="text-center">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-sm btn-success dropdown-toggle text-white"
+                                                            type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-cogs"></i> Acciones
+                                                        </button>
+
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-eye"></i> Ver
+                                                                usuario</a>
+                                                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i>
+                                                                Editar
+                                                                usuario</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <div class="container-fluid mt-5">
         <div class="row justify-content-center">
             <div class="col-md-10">
@@ -53,7 +189,7 @@
                                                         usuario</a>
                                                     <a class="dropdown-item"
                                                         onclick="return confirm('¿ Estas seguro de eliminar este reporte ?')"
-                                                        href="#"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>
+                                                        href="{{ route('proyectos.delete', [$proyecto->id]) }}"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>
                                                 </div>
                                             </div>
                                         </td>

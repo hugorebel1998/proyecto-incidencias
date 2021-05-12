@@ -109,6 +109,7 @@ class UserController extends Controller
 
         $usuario = User::findOrFail($id);
         $usuario->delete();
+        toastr()->success('Se elimino usuario ');
         return redirect()->route('usuario.index');
     }
 

@@ -13,7 +13,7 @@
                                 <div class="col-md-6 pb-2">
                                     <label for="nombre_proyecto">Nombre de proyecto</label>
                                     <input type="hidden" name="id" value="{{ $proyecto->id }}">
-                                    <input disabled  type="text" class="form-control @error('nombre_proyecto') is-invalid @enderror"
+                                    <input type="text" class="form-control @error('nombre_proyecto') is-invalid @enderror"
                                         name="nombre_proyecto" value="{{ $proyecto->name }}">
                                     @error('nombre_proyecto')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -24,7 +24,7 @@
                                     <label for="fecha_inicio">Fecha inicio proyecto</label>
                                     <input type="datetime-local" name="fecha_inicio"
                                         class="form-control @error('fecha_inicio') is-invalid @enderror"
-                                        value="{{ $proyecto->fecha_inicio }}">
+                                        value="{{ old('fecha_inicio') }}">
                                     @error('fecha_inicio')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror

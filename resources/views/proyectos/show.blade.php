@@ -9,18 +9,25 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 ">
-                                <p>
-                                    <i class="fas fa-fingerprint"></i>
-                                    Nombre de proyecto
-                                    <b>{{ $proyecto->name }}</b>
-                                </p>
+                                <h5>
+                                    <i class="fas fa-fingerprint"></i>    
+                                     Nombre de proyecto: 
+                                     <b>{{ $proyecto->name }}</b>
+                                </h5>
                             </div>
-                            <div class="col-md-12">
-                                <p>
+                            <div class="col-md-12 mt-5 ">
+                                <h5>
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Fecha inicio proyecto
+                                    <b>{{ $proyecto->fecha_inicio }}</b>
+                                </h5>
+                            </div>
+                            <div class="col-md-12 mt-5">
+                                <h5>
                                     <i class="fas fa-signature"></i>
                                     Descripción:
                                     <b>{{ $proyecto->description}}</b>
-                                </p>
+                                </h5>
                             </div>
                         </div>
                         <div class="text-center mt-5">

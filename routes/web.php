@@ -60,9 +60,14 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/proyectos/show/{project}', 'ProyectController@show')->name('proyectos.show')->middleware('auth');
     Route::get('/proyectos/edit/{project}', 'ProyectController@edit')->name('proyectos.edit')->middleware('auth');
     Route::post('/proyectos/update/{project}', 'ProyectController@update')->name('proyectos.update')->middleware('auth');
+    Route::get('/proyectos/delete/{project}', 'ProyectController@delete')->name('proyectos.delete')->middleware('auth');
+    Route::get('/proyectos/eliminados', 'ProyectController@eliminados')->name('proyectos.eliminados')->middleware('auth');
+    Route::get('/proyectos/restore/{project}', 'ProyectController@restoreProyect')->name('proyectos.restore')->middleware('auth');
+    Route::get('/proyectos/showDelate/{project}', 'ProyectController@showDelate')->name('proyectos.showDelate')->middleware('auth');
+    
 
     //Rutas categorias
-    Route::get('/categorias/index', 'CategoryController@index')->name('categorias.index')->middleware('auth');
+    // Route::get('/categorias/index', 'CategoryController@index')->name('categorias.index')->middleware('auth');
     Route::get('/categorias/create', 'CategoryController@create')->name('categorias.create')->middleware('auth');
     Route::post('/categorias/store', 'CategoryController@store')->name('categorias.store')->middleware('auth');
     Route::get('/categorias/show/{category}', 'CategoryController@show')->name('categorias.show')->middleware('auth');
@@ -71,7 +76,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 
     //Rutas niveles
-    Route::get('/niveles/index', 'NivelController@index')->name('niveles.index')->middleware('auth');
+    // Route::get('/niveles/index', 'NivelController@index')->name('niveles.index')->middleware('auth');
     Route::get('/niveles/create', 'NivelController@create')->name('niveles.create')->middleware('auth');
     Route::post('/niveles/store', 'NivelController@store')->name('niveles.store')->middleware('auth');
     Route::get('/niveles/show/{category}', 'NivelController@show')->name('niveles.show')->middleware('auth');

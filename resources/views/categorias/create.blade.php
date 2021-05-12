@@ -10,7 +10,7 @@
                         <form action="{{ route('categorias.store') }}" method="POST">
                             @csrf
                             <div class="row">
-                                <div class="col-md-6 pb-2">
+                                <div class="col-md-12 pb-2">
                                     <label for="nombre_categoria">Nombre de categoria</label>
                                     <input type="text" class="form-control @error('nombre_categoria') is-invalid @enderror"
                                         name="nombre_categoria" value="{{ old('nombre_categoria') }}"
@@ -19,7 +19,7 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <label for="id_category">Nombre del proyecto</label>
                                     <select name="id_project"
                                         class="form-control select2 @error('id_project') is-invalid @enderror"
@@ -35,8 +35,7 @@
                                         @endforeach
                                         </option>
                                     </select>
-
-                                </div>
+                                </div> --}}
 
                                 <div class="col-md-12 mt-3">
                                     <label for="descripción">Descripción</label>

@@ -26,7 +26,7 @@ class CategoryRequest extends FormRequest
         return [
             'nombre_categoria' => 'required',
             'descripción' => 'min:5|max:75|required',
-            'id_project' =>'required',
+            // 'id_project' =>'required',
 
         ];
     }

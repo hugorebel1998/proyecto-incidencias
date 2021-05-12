@@ -28,7 +28,6 @@ class CategoryController extends Controller
         $categoria = new Category();
         $categoria->name = $request->nombre_categoria;
         $categoria->description = $request->descripción;
-        $categoria->id_project = $request->id_project;
         // dd($categoria);
         if ($categoria->save()) {
             $categoria->name = $request->nombre_categoria;
@@ -37,7 +36,7 @@ class CategoryController extends Controller
 
             if ($categoria->save()) {
                 toastr()->success('Se registro una nueva categoria:' . " " . $categoria->name);
-                return redirect()->route('categorias.index');
+                return redirect()->route('proyectos.index');
             } else {
                 toastr()->error('Error al crear la categoria');
                 return redirect()->back();
@@ -48,11 +47,11 @@ class CategoryController extends Controller
         }
     }
 
-    public function show($id_project)
+    public function show($id)
     {
-        $categoria = Category::findOrFail($id_project);
-        $proyecto = Project::findOrFail($categoria->id_project);
-        return view('categorias.show', compact('categoria', 'proyecto'));
+        $categoria = Category::findOrFail($id);
+        // $proyecto = Project::findOrFail($categoria->id_project);
+        return view('categorias.show', compact('categoria'));
     }
 
     public function edit($category)
@@ -61,13 +60,13 @@ class CategoryController extends Controller
 
         return view('categorias.edit', compact('categoria'));
     }
-    public function update(CategoryRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $categoria = Category::findOrFail($id);
+        $categoria = Category::find($id);
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'id_project' => 'required'.$categoria->id_project
+            'nombre_categoria' => 'required',
+            'descripción' => 'required',
+            // 'id_project' => 'required'.$categoria->id_project
         ]);
 
         
@@ -83,7 +82,7 @@ class CategoryController extends Controller
 
                 if ($categoria->save()) {
                     toastr()->info('Se actualizó la categoria:' . " " . $categoria->name);
-                    return redirect()->route('categorias.index');
+                    return redirect()->route('proyectos.index');
                 } else {
                     toastr()->error('Error al actualizar la ctegoria');
                     return redirect()->back();

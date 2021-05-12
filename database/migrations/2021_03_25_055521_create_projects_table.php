@@ -17,7 +17,8 @@ class CreateProjectsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('description');
-            $table->dateTime('fecha_inicio')->nullable();
+            $table->dateTime('fecha_inicio')->unique()->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
