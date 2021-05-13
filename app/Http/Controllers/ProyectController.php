@@ -37,7 +37,8 @@ class ProyectController extends Controller
         $proyecto->name = $request->nombre_proyecto;
         $proyecto->description = $request->descripción;
         $proyecto->fecha_inicio = $fecha;
-        $proyecto->
+        $proyecto->id_category = $request->categoria;
+        $proyecto->id_level = $request->nivel;
         dd($proyecto);
         // if ($proyecto->save()) {
         //     $proyecto->name = $request->nombre_proyecto;
