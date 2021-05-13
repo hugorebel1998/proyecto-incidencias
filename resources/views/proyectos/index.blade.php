@@ -2,9 +2,8 @@
 @section('content')
 
     <div class="container-fluid mt-4">
-
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card card-navy collapsed-card">
@@ -20,11 +19,11 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="text-right">
+                                <div class="text-right mb-2">
                                     <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-primary"><i
                                             class="fas fa-plus"></i> Crear categoria</a>
                                 </div>
-                                <table class="order-table table table-hover" cellspacing="0" width="100%">
+                                <table class="order-table table table-hover" cellspacing="0" width="100%" id="example3">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
@@ -86,10 +85,10 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="text-right">
+                                <div class="text-right mb-2">
                                     <a href="{{ route('niveles.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Agregar nivel</a>
                                 </div>
-                                <table class="order-table table table-hover" cellspacing="0" width="100%">
+                                <table class="order-table table table-hover" cellspacing="0" width="100%" id="example4">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
@@ -138,10 +137,10 @@
 
     <div class="container-fluid mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card transparente">
                     <div class="card-header">
-                        <b class="lead font-weight-bold text-primary"> Lista de proyectos</b>
+                        <b class="lead font-weight-bold text-primary"> <i class="fas fa-list"></i> Lista de proyectos</b>
                         <div class="row justify-content-end">
                             <a href="{{ route('proyectos.create') }}" class="btn btn-sm btn-primary text-white mr-3"><i
                                     class="fas fa-plus complemento-plus"></i>&nbsp;&nbsp;Agregar proyecto</a>

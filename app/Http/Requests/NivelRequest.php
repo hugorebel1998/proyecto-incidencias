@@ -25,7 +25,7 @@ class NivelRequest extends FormRequest
     {
         return [
             'nombre_nivel' => 'required',
-            'id_project' => 'required'
+            // 'id_project' => 'required'
         ];
     }
 }

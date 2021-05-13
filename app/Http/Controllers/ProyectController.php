@@ -113,7 +113,7 @@ class ProyectController extends Controller
     // Reguistros eliminados
     function eliminados()
     {
-        $proyectos = Project::onlyTrashed()->get();
+        $proyectos = Project::withTrashed()->get();
         return view('proyectos.eliminados', compact('proyectos'));
     }
 

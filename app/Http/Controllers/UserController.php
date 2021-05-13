@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\ContrasenaRequest;
+use App\Level;
+use App\Project;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -69,7 +72,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $usuario = User::find($id);
-        return view('usuarios.edit', compact('usuario'));
+        $proyectos = Project::select('id', 'name')->get();
+        $niveles = Level::select('id', 'name')->get();
+        return view('usuarios.edit', compact('usuario', 'proyectos', 'niveles'));
     }
     public function update(Request $request, $id)
     {
@@ -84,7 +89,7 @@ class UserController extends Controller
         $usuario->name = $request->nombre;
         $usuario->email = $request->correo_electronico;
         $usuario->telefono = $request->telefóno;
-
+        //    dd($usuario);
 
         if ($usuario->save()) {
             $usuario->name = $request->nombre;
@@ -92,8 +97,8 @@ class UserController extends Controller
             $usuario->telefono = $request->telefóno;
 
             if ($usuario->save()) {
-                toastr()->info('Se actualizo usuario: ' .$usuario->name);
-                return redirect()->route('usuarios.index');
+                toastr()->info('Se actualizo usuario: ' . $usuario->name);
+                return redirect()->route('usuarios.edit', $usuario->id);
             } else {
                 toastr()->error('Error al crear usuario');
                 return redirect()->back();

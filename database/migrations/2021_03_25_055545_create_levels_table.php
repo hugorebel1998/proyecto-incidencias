@@ -17,7 +17,7 @@ class CreateLevelsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
 
-            $table->unsignedBigInteger('id_project');
+            $table->unsignedBigInteger('id_project')->nullable();
             $table->timestamps();
             $table->foreign('id_project')->references('id')->on('projects');
         });

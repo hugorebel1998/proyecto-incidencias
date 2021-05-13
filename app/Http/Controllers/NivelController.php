@@ -14,15 +14,15 @@ class NivelController extends Controller
         return view('niveles.index',compact('niveles'));
     }
     public function create(){
-        $proyectos = Project::select('id', 'name')->get();
-        return view('niveles.create',compact('proyectos'));
+        // $proyectos = Project::select('id', 'name')->get();
+        return view('niveles.create');
     }
 
     public function store(NivelRequest $request){
         
         $nivel = new Level();
         $nivel->name = $request->nombre_nivel;
-        $nivel->id_project = $request->id_project;
+        // $nivel->id_project = $request->id_project;
         
         // dd($nivel);
         if ($nivel->save()) {
@@ -30,14 +30,18 @@ class NivelController extends Controller
 
             if ($nivel->save()) {
                 toastr()->success('Se registro nuevo nivel');
-                return redirect()->route('niveles.index');
+                return redirect()->route('proyectos.index');
             } else {
                 toastr()->error('Error al crear nivel');
                 return redirect()->back();
             }
         } else {
             toastr()->error('Error al crear nivel');
-            return redirect(route('usuarios.create'));
+            return redirect(route('niveles.create'));
         }        
+    }
+    public function byProject($id)
+    {
+        return Level::where('id_project', $id)->get();
     }
 }

@@ -8,12 +8,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -58,17 +56,11 @@
                         </form>
                     </div>
                 </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link text-white" data-widget="control-sidebar" data-slide="true" href="#"
-                        role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li> --}}
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-light-navy elevation-4">
 
-            <a href="index3.html" class="brand-link navbar-navy">
+            <a href="{{ url('/') }}" class="brand-link navbar-navy">
                 <img src="{{ asset('admin-lte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light text-white">Laravel</span>
@@ -76,7 +68,6 @@
             <div class="sidebar">
 
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-
                     <div class="image">
                         <img src="{{ asset('admin-lte/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2"
                             alt="User Image">
@@ -114,29 +105,6 @@
                                 </li>
                             </ul>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-dice-d6"></i>
-                                <p>
-                                    Categorias
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('categorias.index') }}" class="nav-link text-secondary">
-                                        <i class="far fa-list-alt nav-icon"></i>
-                                        <p>Gestión de categorias</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('categorias.create') }}" class="nav-link text-secondary">
-                                        <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear categoria</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> --}}
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-atlas"></i>
@@ -189,59 +157,16 @@
                                 </li>
                             </ul>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-sort-amount-up"></i>
-                                <p>
-                                    Niveles
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('niveles.index') }}" class="nav-link text-secondary">
-                                        <i class="far fa-list-alt nav-icon"></i>
-                                        <p>Gestión de niveles</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('niveles.create') }}" class="nav-link text-secondary">
-                                        <i class="fas fa-plus nav-icon"></i>
-                                        <p>Crear nivel</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> --}}
                     </ul>
                 </nav>
             </div>
         </aside>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
+        <div class="content-wrapper">            
             <main class="py-4">
                 @yield('content')
             </main>
-
-            <!-- /.content -->
         </div>
-        {{-- <aside class="control-sidebar control-sidebar-light">
-            <div class="p-3">   
-                <a href="" class="dropdown-item">
-                    <i class="fas fa-users"></i> Usuarios
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-copy"></i> Proyectos
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-cogs"></i> Configuración
-                </a>
-            </div>
-        </aside> --}}
-
         <footer class="main-footer text-center">
             <strong>&copy; 2020 E-commerce </strong> Todos los derechos reservados.
         </footer>
@@ -249,6 +174,7 @@
 
     <!-- jQuery -->
     <script src="{{ asset('admin-lte/plugins/jquery/jquery.min.js') }}"></script>
+    {{-- <link href="{{ asset('js/app.css') }}" rel="stylesheet"> --}}
     <!-- Bootstrap 4 -->
     <script src="{{ asset('admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Select2 -->
@@ -278,6 +204,32 @@
                 "responsive": true,
                 "autoWidth": false,
             });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "order": [
+                    [0, 'desc']
+                ],
+                language: {
+                    search: "Buscar:",
+                    "lengthMenu": "Recorrer _MENU_ registros por página",
+                    "zeroRecords": "No hay resultados",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles ",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    paginate: {
+                        first: "Primera",
+                        previous: "Primera",
+                        next: "Última",
+                        last: "Último"
+                    },
+                }
+            });
             $('#example3').DataTable({
                 "paging": true,
                 "lengthChange": true,
@@ -304,7 +256,7 @@
                     },
                 }
             });
-            $('#example2').DataTable({
+            $('#example4').DataTable({
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,
@@ -347,6 +299,20 @@
                 theme: 'bootstrap4'
             })
         });
+
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#select-project").on('change', onSelectProjectChange);
+        });
+
+        function onSelectProjectChange() {
+            var project_id = $(this).val();
+            alert(project_id);
+
+            // Peticion AJAX
+
+        }
 
     </script>
 
