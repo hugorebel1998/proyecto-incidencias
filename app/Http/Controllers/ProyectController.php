@@ -24,9 +24,9 @@ class ProyectController extends Controller
 
     public function create()
     {
-        // $categorias = Category::select('id', 'name')->get();
-        // $niveles = Level::select('id', 'name')->get();
-        return view('proyectos.create');
+        $categorias = Category::select('id', 'name')->get();
+        $niveles = Level::select('id', 'name')->get();
+        return view('proyectos.create',compact('categorias', 'niveles'));
     }
 
 
@@ -37,23 +37,24 @@ class ProyectController extends Controller
         $proyecto->name = $request->nombre_proyecto;
         $proyecto->description = $request->descripción;
         $proyecto->fecha_inicio = $fecha;
-        // dd($proyecto);
-        if ($proyecto->save()) {
-            $proyecto->name = $request->nombre_proyecto;
-            $proyecto->description = $request->descripción;
-            $proyecto->fecha_inicio = $fecha;
+        $proyecto->
+        dd($proyecto);
+        // if ($proyecto->save()) {
+        //     $proyecto->name = $request->nombre_proyecto;
+        //     $proyecto->description = $request->descripción;
+        //     $proyecto->fecha_inicio = $fecha;
 
-            if ($proyecto->save()) {
-                toastr()->success('Se registro nuevo proyecto');
-                return redirect()->route('proyectos.index');
-            } else {
-                toastr()->error('Error al crear proyecto');
-                return redirect()->back();
-            }
-        } else {
-            toastr()->error('Error al crear proyecto');
-            return redirect(route('proyectos.create'));
-        }
+        //     if ($proyecto->save()) {
+        //         toastr()->success('Se registro nuevo proyecto');
+        //         return redirect()->route('proyectos.index');
+        //     } else {
+        //         toastr()->error('Error al crear proyecto');
+        //         return redirect()->back();
+        //     }
+        // } else {
+        //     toastr()->error('Error al crear proyecto');
+        //     return redirect(route('proyectos.create'));
+        // }
     }
 
     public function show($proyect)

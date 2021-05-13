@@ -29,15 +29,15 @@
                                     @enderror
                                 </div>
 
-                                {{-- <div class="col-md-6 mt-3">
+                                <div class="col-md-6 mt-3">
                                     <label for="id_category">Selecion de categoria</label>
                                     <select name="id_category"
                                         class="form-control select2 @error('id_category') is-invalid @enderror"
                                         style="width: 100%;">
-                                        <option value="">--Seleciona una opción--</option>
+                                        <option value="0" selected>--Seleciona una opción--</option>
                                         @foreach ($categorias as $categoria)
                                             @if ($loop->first)
-                                                <option value="{{ $categoria->id }}" selected> {{ $categoria->name }}
+                                                <option value="{{ $categoria->id }}"> {{ $categoria->name }}
                                                 </option>
                                             @else
                                                 <option value="{{ $categoria->id }}"> {{ $categoria->name }}
@@ -45,27 +45,24 @@
                                         @endforeach
                                     </select>
 
-                                </div> --}}
-                                {{-- <div class="col-md-6 mt-3">
+                                </div>
+                                <div class="col-md-6 mt-3">
                                     <label for="id_level">Selecion de nivel</label>
                                     <select name="id_level"
                                         class="form-control select2 @error('id_level') is-invalid @enderror"
                                         style="width: 100%;">
-                                        <option value="">--Seleciona una opción--</option>
+                                        <option value="" selected>--Seleciona una opción--</option>
                                         @foreach ($niveles as $nivel)
                                             @if ($loop->first)
-                                                <option value="{{ $nivel->id }}" selected> {{ $nivel->name }}
+                                                <option value="{{ $nivel->id }}"> {{ $nivel->name }}
                                                 </option>
                                             @else
                                                 <option value="{{ $nivel->id }}"> {{ $nivel->name }}
                                             @endif
                                         @endforeach
-
                                         </option>
                                     </select>
-                                </div> --}}
-
-
+                                </div>
                                 <div class="col-md-12 mt-3">
                                     <label for="descripción">Descripción</label>
                                     <textarea name="descripción"

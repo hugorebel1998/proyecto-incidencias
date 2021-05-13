@@ -25,8 +25,9 @@ class ProjectRequest extends FormRequest
     {
         return [
             'nombre_proyecto' => 'max:20|required',
+            'fecha_inicio' => 'required|date',
             'descripción' => 'min:5|max:100|required',
-            'fecha_inicio' => 'required|date'
+            
         ];
     }
 }
